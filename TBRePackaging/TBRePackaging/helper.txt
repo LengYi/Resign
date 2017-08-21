@@ -1,0 +1,19 @@
+BaseDir:保存的根目录
+SourcePath:原始包的目录
+ShortVersion:发布版本，可以为空
+BundleVersion:内部版本，可以为空
+EntitlementsPath：权限路径，可以为空
+
+Name:渠道名字，支持多级目录(win助手/北京)
+Certificate: 证书名字
+Identifier: sku
+InfoPlistIdentifier: infp.plist里面的sku, 没有该key表示不需要修改
+DeviceType:IPA支持类型 0 支持iPhone,iPad;1 支持iPhone; 2 仅支持iPad
+Channels:
+渠道名1:渠道号2 可以为空
+渠道名1:渠道号2 可以为空
+
+通用的属性放在顶部输入框。
+底部输入框属性会自动覆盖通用属性的值。
+Channels:为空，表示为重签
+渠道号为空，表示空渠道

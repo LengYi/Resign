@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "0F69238342A5E55D14AC662EADEF876404A9328C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "0F69238342A5E55D14AC662EADEF876404A9328C" : 0,
+    "4AA92123177C19E70C2B3429CE2A0E7EC4015583" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "BFA60E1D-AE64-4019-8F80-481BA1AC3AEC",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "0F69238342A5E55D14AC662EADEF876404A9328C" : "TBRePackaging",
+    "4AA92123177C19E70C2B3429CE2A0E7EC4015583" : "TBPackaging"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "TBRePackaging",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "TBRePackaging.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/gitlab.airdroid.com\/zeejun\/TBRePackaging.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0F69238342A5E55D14AC662EADEF876404A9328C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/gitlab.airdroid.com\/tb_ios\/AppPackaging.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4AA92123177C19E70C2B3429CE2A0E7EC4015583"
+    }
+  ]
+}

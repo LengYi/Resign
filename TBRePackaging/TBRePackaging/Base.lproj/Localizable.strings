@@ -1,0 +1,24 @@
+/* 
+  Localizable.strings
+  TBRePackaging
+
+  Created by zeejun on 15-4-9.
+  Copyright (c) 2015年 tongbu. All rights reserved.
+*/
+"Saving %@" = "保存 %@";
+"Saved %@" = "已保存 %@";
+"Verifying %@" = "验证 %@";
+"Codesigning %@" = "签名 %@";
+"Please try again" = "请重试";
+"Error" = "出错";
+"You must choose an *.ipa file" = "缺少需要被签名的IPA包";
+"You must choose an signing certificate from dropdown." = "你需要选择一个用于签名的证书";
+"UnZip original app" = "正在解压原始IPA包";
+"UnZip original app Finish" = "解压完成";
+"Getting Signing Certificate IDs" = "正在获取证书ID";
+"Signing Certificate IDs extracted" = "证书ID获取完成";
+"Getting Certificate IDs failed" = "获取证书ID失败";
+"Unzip failed" = "解压失败";"Unrecognizable channel file" = "渠道号文件无法识别，请确保该文件使用了正确的字符编码";
+"OK" = "确定";
+"Provisioning completed" = "证书验证成功";
+"Can't find embedded.mobileprovision file" = "找不到embedded.mobileprovision文件";
