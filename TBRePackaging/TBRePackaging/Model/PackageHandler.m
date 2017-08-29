@@ -103,6 +103,8 @@
                 package.provisionPath = value;
             }else if([key isEqualToString:PackageDeviceType]){
                 package.deviceType = value;
+            }else if([key isEqualToString:PackageShouldAttach]){
+                package.shouldAttach = [value boolValue];
             }
         }else
         {
@@ -181,6 +183,10 @@
         
         if (!package.provisionPath) {
             package.provisionPath = basePackage.provisionPath;
+        }
+        
+        if (basePackage.shouldAttach) {
+            package.shouldAttach = basePackage.shouldAttach;
         }
     }
 }

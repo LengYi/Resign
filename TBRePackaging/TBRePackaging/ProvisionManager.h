@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "BaseManager.h"
+#import "Package.h"
 
 @interface ProvisionManager : BaseManager
-+ (void)copyProvisionToApp:(NSString *)originPath desPath:(NSString *)desPath handle:(void (^)())handle;
++ (void)copyProvisionToApp:(Package *)package desPath:(NSString *)desPath handle:(void (^)())handle;
 
 @end

@@ -71,7 +71,7 @@
         [weakSelf changeAppInfo];
         // 拷贝mobileprovision证书到app包
         // 拷贝完成开始重签名
-        [ProvisionManager copyProvisionToApp:weakSelf.package.provisionPath desPath:[PathManager mobileprovisionPath] handle:^{
+        [ProvisionManager copyProvisionToApp:weakSelf.package desPath:[PathManager mobileprovisionPath] handle:^{
             weakSelf.handle(@"拷贝证书完成,开始签名");
             [weakSelf doCodeSigning];
         }];

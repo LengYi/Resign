@@ -3,6 +3,7 @@ SourcePath:原始包的目录
 ShortVersion:发布版本，可以为空
 BundleVersion:内部版本，可以为空
 EntitlementsPath：权限路径，可以为空
+ShouldAttach:重签完是否允许Xcode附加程序 默认0
 
 Name:渠道名字，支持多级目录(win助手/北京)
 Certificate: 证书名字

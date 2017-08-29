@@ -12,17 +12,29 @@
 
 @implementation ProvisionManager
 
-+ (void)copyProvisionToApp:(NSString *)originPath desPath:(NSString *)desPath handle:(void (^)())handle{
++ (void)copyProvisionToApp:(Package *)package desPath:(NSString *)desPath handle:(void (^)())handle{
     if ([[NSFileManager defaultManager] fileExistsAtPath:desPath]) {
         [[NSFileManager defaultManager] removeItemAtPath:desPath error:nil];
     }
     
     NSTask *task = [[NSTask alloc] init];
     [task setLaunchPath:@"/bin/cp"];
-    [task setArguments:[NSArray arrayWithObjects:originPath, desPath, nil]];
+    [task setArguments:[NSArray arrayWithObjects:package.provisionPath, desPath, nil]];
     
     [self addTerminationHandlerForTask:task usingBlock:^{
         [self checkProvisioningWithPath:desPath];
+        
+        NSString *path = [desPath stringByDeletingLastPathComponent];
+        path = [path stringByAppendingPathComponent:@"/entitlements.plist"];
+        // 使用传入的entitlements权限文件进行签名
+        if(package.entitlementsPath){
+            [self addEntitlements:package.entitlementsPath toPath:path];
+        }else{// 创建新的权限文件进行签名
+            [self createEntitlements:[self getMobileProvisionWithPath:package.provisionPath]
+                                path:path
+                        shouldAttach:package.shouldAttach];
+        }
+        
         if (handle) {
             handle();
         }
@@ -34,7 +46,7 @@
 
 + (void)checkProvisioningWithPath:(NSString *)provisionPath{
     BOOL identifierOK = NO;
-    BOOL certOK = NO;
+    //BOOL certOK = NO;
     
     NSDictionary *mobileProvision = [self getMobileProvisionWithPath:provisionPath];
     if(mobileProvision){
@@ -58,16 +70,16 @@
             }
         }
     }
-    
-    
-    if (1) {
-        NSString *path = [provisionPath stringByDeletingLastPathComponent];
-        path = [path stringByAppendingPathComponent:@"/entitlements.plist"];
-        [self doEntitlements:mobileProvision path:path];
-    }
 }
 
-+ (void)doEntitlements:(NSDictionary *)mobileProvision path:(NSString *)path{
++ (void)addEntitlements:(NSString *)entitlementsPath toPath:(NSString *)path{
+    NSFileManager *defmanager = [NSFileManager defaultManager];
+    [defmanager copyItemAtPath:entitlementsPath toPath:path error:nil];
+}
+
++ (void)createEntitlements:(NSDictionary *)mobileProvision
+                      path:(NSString *)path
+              shouldAttach:(BOOL)shouldAttach{
     id value = [mobileProvision objectForKey:@"Entitlements"];
     if ([value isKindOfClass:[NSDictionary class]]){
          NSDictionary *dictionary = (NSDictionary *)value;
@@ -122,6 +134,11 @@
                 [entitlementDict setObject:tempArray forKey:key];
             }else
             {
+                if (shouldAttach) {
+                    if ([key isEqualToString:@"get-task-allow"]) {
+                        object = @(YES);
+                    }
+                }
                 [entitlementDict setObject:object forKey:key];
             }
         }
@@ -130,7 +147,7 @@
         [entitlementDict writeToFile:path atomically:YES];
         
         // 记录teamID
-        [AppPackageInfoManager addSkuIDWithPath:[PathManager skuIDPath] skuID:applicationIdentifierPrefix];
+        //[AppPackageInfoManager addSkuIDWithPath:[PathManager skuIDPath] skuID:applicationIdentifierPrefix];
     }else{
         NSLog(@"Entitlements 生成失败");
     }

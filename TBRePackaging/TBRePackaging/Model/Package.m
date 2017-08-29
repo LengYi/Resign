@@ -20,6 +20,7 @@ NSString *const PackageProvisionPath       = @"ProvisionPath";
 NSString *const PackageChannels            = @"Channels";
 NSString *const PackagePlistIdentifier     = @"InfoPlistIdentifier";
 NSString *const PackageDeviceType          = @"DeviceType";
+NSString *const PackageShouldAttach        = @"ShouldAttach";
 
 @interface Package()
 
