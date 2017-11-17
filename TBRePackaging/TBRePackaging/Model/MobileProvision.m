@@ -23,9 +23,14 @@
     
     NSString *mobileProvisionsPath = nil;
     for (MobileProvisionItem *item in array) {
-        if (item.isWildcard == isWildcard) {
+        if(item.isWildcard && [item.applicationIdentifier hasSuffix:identifier]){
             mobileProvisionsPath = item.path;
             break;
+        }else{
+            if (item.isWildcard == isWildcard) {
+                mobileProvisionsPath = item.path;
+                break;
+            }
         }
     }
 
